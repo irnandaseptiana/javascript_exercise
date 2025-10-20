@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello JavaScript</title>
+</head>
+<body>
+  <h1 id="title">Halo Dunia!</h1>
+
+  <script>
+    const title = document.getElementById("title");
+    title.style.color = "blue";
+    console.log("JavaScript berhasil dijalankan!");
+  </script>
+</body>
+</html>
