@@ -1,8 +1,65 @@
 #https://irnandaseptiana.github.io/javascript_exercise/
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple File-Generating System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      padding: 40px;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      border: none;
+      background-color: #3498db;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
 <body>
   <h1>Welcome to my simple file-generating system</h1>
+
+  <form>
+    <label for="seller">Seller Code:</label>
+    <input type="text" id="seller" name="seller" placeholder="Enter Seller Code" required>
+
+    <label for="buyer">Buyer Code:</label>
+    <input type="text" id="buyer" name="buyer" placeholder="Enter Buyer Code" required>
+
+    <button type="submit">Submit</button>
+  </form>
 </body>
 </html>
+
