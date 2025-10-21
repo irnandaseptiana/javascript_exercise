@@ -26,7 +26,9 @@
       margin-top: 15px;
       font-weight: bold;
     }
-    input[type="text"] {
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
       width: 100%;
       padding: 8px;
       margin-top: 5px;
@@ -51,15 +53,64 @@
 <body>
   <h1>Welcome to my simple file-generating system</h1>
 
-  <form>
+  <form id="dataForm">
     <label for="seller">Seller Code:</label>
     <input type="text" id="seller" name="seller" placeholder="Enter Seller Code" required>
 
     <label for="buyer">Buyer Code:</label>
     <input type="text" id="buyer" name="buyer" placeholder="Enter Buyer Code" required>
 
-    <button type="submit">Submit</button>
+    <label for="currency">Currency:</label>
+    <input type="text" id="currency" name="currency" placeholder="Enter Currency (e.g. USD)" required>
+
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" placeholder="Enter Amount" required>
+
+    <label for="reference">Reference:</label>
+    <input type="text" id="reference" name="reference" placeholder="Enter Reference" required>
+
+    <label for="receivedDate">Received Date:</label>
+    <input type="date" id="receivedDate" name="receivedDate" required>
+
+    <label for="maturityDate">Maturity Date:</label>
+    <input type="date" id="maturityDate" name="maturityDate" required>
+
+    <button type="button" onclick="generateCSV()">Generate CSV</button>
   </form>
+
+  <script>
+    function generateCSV() {
+      // Ambil data dari form
+      const data = {
+        "Seller Code": document.getElementById("seller").value,
+        "Buyer Code": document.getElementById("buyer").value,
+        "Currency": document.getElementById("currency").value,
+        "Amount": document.getElementById("amount").value,
+        "Reference": document.getElementById("reference").value,
+        "Received Date": document.getElementById("receivedDate").value,
+        "Maturity Date": document.getElementById("maturityDate").value,
+      };
+
+      // Validasi sederhana
+      for (let key in data) {
+        if (!data[key]) {
+          alert(`${key} cannot be empty`);
+          return;
+        }
+      }
+
+      // Buat isi CSV
+      const headers = Object.keys(data).join(",") + "\n";
+      const values = Object.values(data).join(",") + "\n";
+      const csvContent = headers + values;
+
+      // Buat file dan unduh
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "generated_data.csv";
+      link.click();
+    }
+  </script>
 </body>
 </html>
-
